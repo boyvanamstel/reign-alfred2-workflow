@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.dangercove.reign.Reign-Alfred-Workflow</string>
+	<key>connections</key>
+	<dict>
+		<key>BA17BE41-176A-4E9A-B958-A3F0BEA36829</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C9788FD7-22C1-429B-BB4E-72A235ED9BF8</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>C9788FD7-22C1-429B-BB4E-72A235ED9BF8</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>42D05639-3F0F-4760-8214-317167E4173D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Danger Cove</string>
+	<key>description</key>
+	<string>Remote control Spotify via Alfred via Reign. In-remote-ception!</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Reign for Spotify</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>keyword</key>
+				<string>reign</string>
+				<key>runningsubtext</key>
+				<string>...</string>
+				<key>script</key>
+				<string>/usr/bin/ruby ./main.rb {query}</string>
+				<key>subtext</key>
+				<string>Remote control the remote Spotify client. In-remote-ception!</string>
+				<key>title</key>
+				<string>Command Reign for Spotify</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>BA17BE41-176A-4E9A-B958-A3F0BEA36829</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Reign for Spotify</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>42D05639-3F0F-4760-8214-317167E4173D</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>/usr/bin/ruby ./run_command.rb {query}</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>C9788FD7-22C1-429B-BB4E-72A235ED9BF8</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>42D05639-3F0F-4760-8214-317167E4173D</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>BA17BE41-176A-4E9A-B958-A3F0BEA36829</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>C9788FD7-22C1-429B-BB4E-72A235ED9BF8</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>http://dangercove.com/reign</string>
+</dict>
+</plist>
