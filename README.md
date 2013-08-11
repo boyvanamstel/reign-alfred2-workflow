@@ -18,10 +18,10 @@ feedback](https://raw.github.com/DangerCove/reign-alfred2-workflow/master/screen
 I'm assuming you've already installed Reign. If you haven't, please visit
 [dangercove.com/reign](http://dangercove.com/reign).
 
-1. Download the latest [workflow file](https://raw.github.com/DangerCove/reign-alfred2-workflow/master/Reign%20for%20Spotify.alfredworkflow).
+1. Download the latest [workflow
+file](https://raw.github.com/DangerCove/reign-alfred2-workflow/master/Reign%20for%20Spotify.alfredworkflow);
 2. Install by double-clicking it;
-3. Press your Alfred shortcut and type ```reign [service
-ip/hostname]:[port]```, return;
+3. Press your Alfred shortcut and type ```reign [ip/hostname]:[port]```, return;
 4. That's it, now just type ```reign [command]```.
 
 ## Commands
