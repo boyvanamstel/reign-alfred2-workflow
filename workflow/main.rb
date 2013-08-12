@@ -47,7 +47,7 @@ Alfred.with_friendly_error do |alfred|
         :uid      => "",
         :title    => "Open '#{np}'",
         :subtitle => "Open in Spotify.",
-        :arg      => "open=#{np}",
+        :arg      => "run_command=o",
         :valid    => "yes",
       })    
       fb.add_item({

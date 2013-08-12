@@ -20,9 +20,9 @@ Alfred.with_friendly_error do |alfred|
     puts "Host has been changed to '#{value}'."
     next
   elsif query.start_with? 'copy'
-    IO.popen('pbcopy', 'w') { |f| f << value }
+    IO.popen('pbcopy', 'w+') { |f| f << value }
     puts "Copied '#{value}' to your clipboard."
-    next 
+    next
   end
 
   unless settings.has_key? "host"
@@ -57,6 +57,3 @@ Alfred.with_friendly_error do |alfred|
     puts "Unknown command '#{value}'."
   end
 end
-
-
-
