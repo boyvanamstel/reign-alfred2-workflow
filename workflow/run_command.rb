@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 
+($LOAD_PATH << File.expand_path("..", __FILE__)).uniq!
+
 require 'rubygems' unless defined? Gem # rubygems is only needed in 1.8
 require "bundle/bundler/setup"
 require "alfred"
@@ -16,7 +18,8 @@ Alfred.with_friendly_error do |alfred|
   value = query.partition('=').last
 
   if query.start_with? 'set_host'
-    alfred.setting.dump({ "host", value })
+    settings[:host] = value
+    alfred.setting.close
     puts "Host has been changed to '#{value}'."
     next
   elsif query.start_with? 'copy'
@@ -25,12 +28,12 @@ Alfred.with_friendly_error do |alfred|
     next
   end
 
-  unless settings.has_key? "host"
+  unless settings.has_key? :host
     puts "First setup the remote host IP or hostname using 'reign host'."
-    next 
+    next
   end
 
-  base_url = "http://#{settings['host']}"
+  base_url = "http://#{settings[:host]}"
 
   if query.start_with? 'open'
     r = Net::HTTP.get_response(URI.parse("#{base_url}/status"))

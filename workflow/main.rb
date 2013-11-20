@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 
+($LOAD_PATH << File.expand_path("..", __FILE__)).uniq!
+
 require 'rubygems' unless defined? Gem # rubygems is only needed in 1.8
 require "bundle/bundler/setup"
 require "alfred"
@@ -10,7 +12,7 @@ require 'net/http'
 
 def faux_query(query)
   query.length > 0 ? query : "..."
-end  
+end
 
 def show_host_item(fb, query)
   if query.start_with? 'host'
@@ -30,11 +32,11 @@ Alfred.with_friendly_error do |alfred|
   settings = alfred.setting.load
   query = ARGV.join(" ").strip
 
-  if !settings.has_key? 'host' or query.start_with? 'host'
+  if !settings.has_key? :host or query.start_with? 'host'
     show_host_item(fb, query)
   else
     begin
-      base_url = "http://#{settings['host']}"
+      base_url = "http://#{settings[:host]}"
       np = Net::HTTP.get_response(URI.parse("#{base_url}/nowplaying")).body
       fb.add_item({
         :uid      => "",
@@ -49,7 +51,7 @@ Alfred.with_friendly_error do |alfred|
         :subtitle => "Open in Spotify.",
         :arg      => "run_command=o",
         :valid    => "yes",
-      })    
+      })
       fb.add_item({
         :uid      => "",
         :title    => "Command Reign",
@@ -62,8 +64,6 @@ Alfred.with_friendly_error do |alfred|
     end
   end
 
-  puts fb.to_xml    
+  puts fb.to_xml
 end
-
-
 

@@ -42,35 +42,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>63</integer>
-				<key>keyword</key>
-				<string>reign</string>
-				<key>runningsubtext</key>
-				<string>...</string>
-				<key>script</key>
-				<string>/usr/bin/ruby ./main.rb {query}</string>
-				<key>subtext</key>
-				<string>Remote control the remote Spotify client. In-remote-ception!</string>
-				<key>title</key>
-				<string>Command Reign for Spotify</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>BA17BE41-176A-4E9A-B958-A3F0BEA36829</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>escaping</key>
 				<integer>127</integer>
 				<key>script</key>
@@ -110,6 +81,35 @@
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>keyword</key>
+				<string>reign</string>
+				<key>runningsubtext</key>
+				<string>...</string>
+				<key>script</key>
+				<string>/usr/bin/ruby ./main.rb {query}</string>
+				<key>subtext</key>
+				<string>Remote control the remote Spotify client. In-remote-ception!</string>
+				<key>title</key>
+				<string>Command Reign for Spotify</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>BA17BE41-176A-4E9A-B958-A3F0BEA36829</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -123,7 +123,7 @@
 		<key>BA17BE41-176A-4E9A-B958-A3F0BEA36829</key>
 		<dict>
 			<key>ypos</key>
-			<real>10</real>
+			<real>20</real>
 		</dict>
 		<key>C9788FD7-22C1-429B-BB4E-72A235ED9BF8</key>
 		<dict>
