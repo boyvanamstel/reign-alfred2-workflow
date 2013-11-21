@@ -1,12 +1,9 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 
-($LOAD_PATH << File.expand_path("..", __FILE__)).uniq!
-
 require 'rubygems' unless defined? Gem
 require "bundle/bundler/setup"
 require "alfred"
-
 
 def something_goes_wrong
   true

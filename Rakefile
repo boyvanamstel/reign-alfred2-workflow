@@ -5,7 +5,6 @@ require 'plist'
 
 config_file = 'config.yml'
 
-
 workflow_home=File.expand_path("~/Library/Application Support/Alfred 2/Alfred.alfredpreferences/workflows")
 
 $config = YAML.load_file(config_file)

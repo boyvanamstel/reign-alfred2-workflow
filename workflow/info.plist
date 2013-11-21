@@ -42,17 +42,29 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
 				<key>escaping</key>
-				<integer>127</integer>
+				<integer>63</integer>
+				<key>keyword</key>
+				<string>reign</string>
+				<key>runningsubtext</key>
+				<string>...</string>
 				<key>script</key>
-				<string>/usr/bin/ruby ./run_command.rb {query}</string>
+				<string>/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby ./main.rb {query}</string>
+				<key>subtext</key>
+				<string>Remote control the remote Spotify client. In-remote-ception!</string>
+				<key>title</key>
+				<string>Command Reign for Spotify</string>
 				<key>type</key>
 				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>C9788FD7-22C1-429B-BB4E-72A235ED9BF8</string>
+			<string>BA17BE41-176A-4E9A-B958-A3F0BEA36829</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -84,29 +96,17 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>1</integer>
 				<key>escaping</key>
-				<integer>63</integer>
-				<key>keyword</key>
-				<string>reign</string>
-				<key>runningsubtext</key>
-				<string>...</string>
+				<integer>127</integer>
 				<key>script</key>
-				<string>/usr/bin/ruby ./main.rb {query}</string>
-				<key>subtext</key>
-				<string>Remote control the remote Spotify client. In-remote-ception!</string>
-				<key>title</key>
-				<string>Command Reign for Spotify</string>
+				<string>/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby ./run_command.rb {query}</string>
 				<key>type</key>
 				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
+			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>BA17BE41-176A-4E9A-B958-A3F0BEA36829</string>
+			<string>C9788FD7-22C1-429B-BB4E-72A235ED9BF8</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -128,7 +128,7 @@
 		<key>C9788FD7-22C1-429B-BB4E-72A235ED9BF8</key>
 		<dict>
 			<key>ypos</key>
-			<real>20</real>
+			<real>90</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
