@@ -5,6 +5,7 @@ require 'rubygems' unless defined? Gem # rubygems is only needed in 1.8
 require "bundle/bundler/setup"
 require "alfred"
 
+require 'json'
 require 'uri'
 require 'net/http'
 
@@ -36,20 +37,31 @@ Alfred.with_friendly_error do |alfred|
     begin
       base_url = "http://#{settings[:host]}"
       np = Net::HTTP.get_response(URI.parse("#{base_url}/nowplaying")).body
-      fb.add_item({
-        :uid      => "",
-        :title    => "Copy '#{np}'",
-        :subtitle => "Copy to clipboard.",
-        :arg      => "copy=#{np}",
-        :valid    => "yes",
-      })
-      fb.add_item({
-        :uid      => "",
-        :title    => "Open '#{np}'",
-        :subtitle => "Open in Spotify.",
-        :arg      => "run_command=o",
-        :valid    => "yes",
-      })
+      s = JSON.parse(Net::HTTP.get_response(URI.parse("#{base_url}/status")).body)
+      if s['state'].eql? 'playing'
+        fb.add_item({
+          :uid      => "",
+          :title    => "Copy '#{np}'",
+          :subtitle => "Copy to clipboard.",
+          :arg      => "copy=#{np}",
+          :valid    => "yes",
+        })
+        track_id = s['track_id']
+        fb.add_item({
+          :uid      => "",
+          :title    => "Copy '#{track_id}'",
+          :subtitle => "Copy to clipboard.",
+          :arg      => "copy=#{track_id}",
+          :valid    => "yes",
+        })
+        fb.add_item({
+          :uid      => "",
+          :title    => "Open '#{np}'",
+          :subtitle => "Open in Spotify.",
+          :arg      => "run_command=o",
+          :valid    => "yes",
+        })
+      end
       fb.add_item({
         :uid      => "",
         :title    => "Command Reign",

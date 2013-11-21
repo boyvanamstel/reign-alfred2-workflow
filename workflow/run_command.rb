@@ -20,10 +20,6 @@ Alfred.with_friendly_error do |alfred|
     alfred.setting.close
     puts "Host has been changed to '#{value}'."
     next
-  elsif query.start_with? 'copy'
-    IO.popen('pbcopy', 'w+') { |f| f << value }
-    puts "Copied '#{value}' to your clipboard."
-    next
   end
 
   unless settings.has_key? :host
@@ -39,18 +35,52 @@ Alfred.with_friendly_error do |alfred|
     `open #{j['track_id']}`
     puts "Opening '#{j['now_playing']}' in Spotify."
     next 
+  elsif query.start_with? 'copy'
+    IO.popen('pbcopy', 'w+') { |f| f << value }
+    puts "Copied '#{value}' to your clipboard."
+    next
   end
 
-  if value.start_with? "np" or value.start_with? "nowplaying" # Now Playing
+  case value
+  when "np", "nowplaying" # Now Playing
     r = Net::HTTP.get_response(URI.parse("#{base_url}/nowplaying"))
     puts r.body
-  elsif value.start_with? "n" or value.start_with? "next" # Next
-    r = Net::HTTP.get_response(URI.parse("#{base_url}/next"))
-  elsif value.start_with? "p" or value.start_with? "previous" # Previous
-    r = Net::HTTP.get_response(URI.parse("#{base_url}/previous"))
-  elsif value.start_with? "s" or value.start_with? "playpause" or value.start_with? "play" or value.start_with? "pause" # Play/Pause
-    r = Net::HTTP.get_response(URI.parse("#{base_url}/playpause"))
-  elsif value.start_with? "o" or value.start_with? "open" # Open in Spotify
+  when "n", "next" # Next
+    Net::HTTP.get_response(URI.parse("#{base_url}/next"))
+    r = Net::HTTP.get_response(URI.parse("#{base_url}/nowplaying"))
+    puts r.body
+  when "p", "previous" # Previous
+    Net::HTTP.get_response(URI.parse("#{base_url}/previous"))
+    r = Net::HTTP.get_response(URI.parse("#{base_url}/nowplaying"))
+    puts r.body
+  when "s", "playpause" # Play/Pause
+    Net::HTTP.get_response(URI.parse("#{base_url}/playpause"))
+    r = Net::HTTP.get_response(URI.parse("#{base_url}/status"))
+    j = JSON.parse(r.body)
+    if j['state'].eql? 'playing'
+      r = Net::HTTP.get_response(URI.parse("#{base_url}/nowplaying"))
+      puts r.body
+    end
+  when "play"
+    r = Net::HTTP.get_response(URI.parse("#{base_url}/status"))
+    j = JSON.parse(r.body)
+    if !j['state'].eql? 'playing'
+      Net::HTTP.get_response(URI.parse("#{base_url}/playpause"))
+      r = Net::HTTP.get_response(URI.parse("#{base_url}/nowplaying"))
+      puts r.body
+    end
+  when "pause", "stop"
+    r = Net::HTTP.get_response(URI.parse("#{base_url}/status"))
+    j = JSON.parse(r.body)
+    if !['paused','stopped'].include? j['state']
+      Net::HTTP.get_response(URI.parse("#{base_url}/playpause"))
+      if value.eql? 'pause'
+        puts "Paused"
+      else
+        puts "Stopped"
+      end
+    end
+  when "o", "open" # Open in Spotify
     r = Net::HTTP.get_response(URI.parse("#{base_url}/status"))
     j = JSON.parse(r.body)
     `open #{j['track_id']}`
