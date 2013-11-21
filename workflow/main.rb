@@ -31,11 +31,11 @@ Alfred.with_friendly_error do |alfred|
   settings = alfred.setting.load
   query = ARGV.join(" ").strip
 
-  if !settings.has_key? :host or query.start_with? 'host'
+  if !settings.has_key? 'host' or query.start_with? 'host'
     show_host_item(fb, query)
   else
     begin
-      base_url = "http://#{settings[:host]}"
+      base_url = "http://#{settings['host']}"
       np = Net::HTTP.get_response(URI.parse("#{base_url}/nowplaying")).body
       s = JSON.parse(Net::HTTP.get_response(URI.parse("#{base_url}/status")).body)
       if s['state'].eql? 'playing'

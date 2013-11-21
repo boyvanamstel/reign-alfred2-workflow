@@ -1,0 +1,9 @@
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby extconf.rb 
+creating Makefile
+
+make
+xcrun cc -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin12.0 -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin12.0 -I. -DJSON_GENERATOR  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -arch i386 -arch x86_64 -g -O3 -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   -c generator.c
+xcrun: Error: could not stat active Xcode path '/Applications/Xcode5-DP3.app/Contents/Developer'. (No such file or directory)
+cc -arch i386 -arch x86_64 -pipe -bundle -undefined dynamic_lookup -o generator.bundle generator.o -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L. -arch i386 -arch x86_64     -lruby  -lpthread -ldl -lobjc  
+clang: error: no such file or directory: 'generator.o'
+make: *** [generator.bundle] Error 1

@@ -16,18 +16,17 @@ Alfred.with_friendly_error do |alfred|
   value = query.partition('=').last
 
   if query.start_with? 'set_host'
-    settings[:host] = value
-    alfred.setting.close
+    alfred.setting.dump({ "host", value })
     puts "Host has been changed to '#{value}'."
     next
   end
 
-  unless settings.has_key? :host
+  unless settings.has_key? "host"
     puts "First setup the remote host IP or hostname using 'reign host'."
     next
   end
 
-  base_url = "http://#{settings[:host]}"
+  base_url = "http://#{settings['host']}"
 
   if query.start_with? 'open'
     r = Net::HTTP.get_response(URI.parse("#{base_url}/status"))
